@@ -32,6 +32,14 @@ class EmpleadoOut(BaseModel):
     activo: bool
     model_config = ConfigDict(from_attributes=True)
 
+# --- TURNOS ---
+class TurnoCreate(BaseModel):
+    empleado_id: int
+    dia_semana: int  # 0 = Lunes, 1 = Martes ... 6 = Domingo
+    hora_entrada_oficial: str  # Formato "HH:MM" (Ej. "08:00")
+    hora_salida_oficial: str   # Formato "HH:MM" (Ej. "18:00")
+    tolerancia_minutos: int = 15
+
 # --- ASISTENCIAS ---
 class AsistenciaOut(BaseModel):
     id: int
